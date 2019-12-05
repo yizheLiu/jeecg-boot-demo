@@ -60,22 +60,17 @@ public class BcDistributorController extends JeecgController<BcDistributor, IBcD
 								   @RequestParam(name="pageNo", defaultValue="1") Integer pageNo,
 								   @RequestParam(name="pageSize", defaultValue="10") Integer pageSize,
 								   HttpServletRequest req) {
-		if(oConvertUtils.isEmpty(bcDistributor.getMobilePhone())&&
+		if(oConvertUtils.isEmpty(bcDistributor.getDistributorName())&&
 				oConvertUtils.isEmpty(bcDistributor.getDistributorFrom())){
 			if(oConvertUtils.isEmpty(bcDistributor.getPid())){
 				bcDistributor.setPid("0");
 			}
 		}
-		if(!oConvertUtils.isEmpty(bcDistributor.getMobilePhone())){
-			bcDistributor.setMobilePhone("*"+bcDistributor.getMobilePhone()+"*");
-			bcDistributor.setDistributorName("*"+bcDistributor.getMobilePhone()+"*");
-		}
-//		CriteriaQuery cq = new CriteriaQuery(XXXXX.class, dataGrid);
-//		cq.add(Restrictions.or(Restrictions.ne("字段名", "无效"), Property.forName("字段名").isNull()));
-		
-		
+//		if(!oConvertUtils.isEmpty(bcDistributor.getMobilePhone())){
+////			bcDistributor.setMobilePhone("*"+bcDistributor.getMobilePhone()+"*");
+//			bcDistributor.setDistributorName("*"+bcDistributor.getMobilePhone()+"*");
+//		}
 		QueryWrapper<BcDistributor> queryWrapper = QueryGenerator.initQueryWrapper(bcDistributor, req.getParameterMap());
-		queryWrapper.or()
 		Page<BcDistributor> page = new Page<BcDistributor>(pageNo, pageSize);
 		IPage<BcDistributor> pageList = bcDistributorService.page(page, queryWrapper);
 		return Result.ok(pageList);

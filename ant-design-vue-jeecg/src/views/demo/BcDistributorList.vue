@@ -6,7 +6,7 @@
         <a-row :gutter="24">
           <a-col :md="6" :sm="8">
             <a-form-item label="关键字">
-              <a-input placeholder="请输入手机号/姓名" v-model="queryParam.mobilePhone"></a-input>
+              <a-input placeholder="请输入手机号/姓名" v-model="queryParam.distributorName"></a-input>
             </a-form-item>
           </a-col>
           <a-col :md="6" :sm="8">
@@ -99,6 +99,8 @@
 
       </a-table>
     </div>
+
+
 
     <bcDistributor-modal ref="modalForm" @ok="modalFormOk"></bcDistributor-modal>
   </a-card>
